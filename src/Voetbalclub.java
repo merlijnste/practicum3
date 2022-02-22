@@ -7,7 +7,11 @@ public class Voetbalclub {
     private int aantalGespeeld;
 
     public Voetbalclub(String nm) {
-        naam = nm;
+        if (nm == "" || nm == null){
+            naam = "Fc";
+        }else {
+            naam = nm;
+        }
         aantalGewonnen = 0;
         aantalGelijk = 0;
         aantalVerloren = 0;
@@ -17,16 +21,18 @@ public class Voetbalclub {
         if (ch == 'w') {
             aantalGewonnen = aantalGewonnen + 1;
             totaalPunten = totaalPunten + 3;
+            aantalGespeeld++;
         }
         if (ch == 'g') {
             aantalGelijk = aantalGelijk + 1;
             totaalPunten = totaalPunten +1;
+            aantalGespeeld++;
         }
 
         if (ch == 'v') {
             aantalVerloren = aantalVerloren + 1;
+            aantalGespeeld++;
         }
-        aantalGespeeld = aantalGespeeld + 1;
     }
 
     public int aantalPunten() {
@@ -35,6 +41,10 @@ public class Voetbalclub {
 
     public int aantalGespeeld() {
         return aantalGespeeld;
+    }
+
+    public String getNaam(){
+        return naam;
     }
 
     public String toString() {
